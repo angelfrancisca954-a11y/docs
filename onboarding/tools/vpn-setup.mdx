@@ -1,0 +1,69 @@
+---
+title: "VPN Setup: Connect to the Mortega Internal Network"
+sidebarTitle: "VPN Setup"
+description: "Connect to the company VPN for the first time, understand when it's required, and resolve common connection issues with this setup guide."
+---
+
+The VPN client is installed automatically by MDM as part of your [laptop setup](/onboarding/tools/laptop-setup). You don't need to install anything yourself — this guide covers connecting for the first time, understanding when VPN is required, and resolving common issues.
+
+## First Connection
+
+<Steps>
+  <Step title="Open the VPN client">
+    Launch the VPN client from your **Applications** folder on macOS or the **Start menu** on Windows. You should find it already installed if MDM enrollment completed successfully.
+  </Step>
+  <Step title="Enter the server address">
+    When prompted for a server address, enter the address IT provided in your welcome email. If you can't find it, check your IT onboarding ticket or contact the help desk.
+  </Step>
+  <Step title="Authenticate with your credentials and MFA">
+    Sign in using your company credentials. You'll be prompted for multi-factor authentication (MFA) as part of the login flow — have your authenticator app ready.
+  </Step>
+  <Step title="Confirm the connection">
+    You should see a **Connected** status within 10 seconds. Once connected, you'll have access to internal systems, dashboards, and code repositories.
+  </Step>
+</Steps>
+
+## When VPN Is Required
+
+VPN is required to access internal systems and sensitive infrastructure. It is **not** required for everyday SaaS tools.
+
+| Requires VPN | Does not require VPN |
+|---|---|
+| Internal dashboards and admin tools | Email |
+| Staging and production environments | Slack |
+| Code repositories | Zoom |
+| HR portal and payroll systems | Any SSO-connected SaaS app |
+
+## Split vs. Full Tunnel
+
+The VPN is configured as **split tunnel** by default. This means only traffic destined for internal Mortega systems routes through the VPN — normal web browsing goes directly to the internet without going through the tunnel.
+
+<Warning>
+  Do not change the tunnel configuration. Split tunnel is a deliberate security and performance setting. Switching to full tunnel without IT approval can affect your internet performance and will not be supported.
+</Warning>
+
+## Staying Connected
+
+The VPN client reconnects automatically after your machine wakes from sleep or switches networks. If it doesn't reconnect on its own, disconnect manually and reconnect.
+
+<Info>
+  If you are working remotely from a country other than your usual location, check with IT before connecting. Some geo-restrictions apply and IT may need to update your access profile in advance.
+</Info>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Can't authenticate">
+    Make sure your MFA is set up and your authenticator app is linked to your company account. If your MFA was recently reset by IT, you'll need to re-enroll your authenticator before you can log in. Contact IT if you're unsure of your enrollment status.
+  </Accordion>
+  <Accordion title="Connected but can't reach internal tools">
+    First, try disconnecting and reconnecting to the VPN. If internal tools are still unreachable, restart the VPN client entirely. If the issue persists after a restart, file an [IT ticket](/it-security/access-requests) — there may be a permissions issue with your profile.
+  </Accordion>
+  <Accordion title="VPN client not installed">
+    The VPN client is delivered via MDM. If it's missing, your MDM enrollment may not have completed successfully. Return to the [laptop setup guide](/onboarding/tools/laptop-setup) and confirm enrollment, then wait up to 24 hours for the client to appear. If it still doesn't show up, contact IT.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Still stuck after trying the steps above? File an [IT ticket](/it-security/access-requests) with a description of the issue and the error message you're seeing. The help desk typically responds within a few hours.
+</Tip>

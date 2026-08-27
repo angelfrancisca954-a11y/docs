@@ -1,0 +1,48 @@
+---
+title: "Data Handling: Classify, Store, and Share Data Safely"
+sidebarTitle: "Data Handling"
+description: "How to classify, store, and share Mortega and customer data responsibly — including storage rules, sharing guidelines, and how to report a data incident."
+---
+
+How you handle data has legal, contractual, and reputational consequences for Mortega and for the customers who trust us with their information. These guidelines apply to every employee and contractor, regardless of role or seniority. Understanding the classification system is the foundation — everything else follows from it.
+
+## Data classification
+
+Mortega uses four tiers to classify data. The tier determines how carefully you must protect it and who is allowed to access it.
+
+| Classification | Examples | Handling |
+|----------------|----------|----------|
+| **Public** | Marketing content, public docs | No restrictions |
+| **Internal** | Meeting notes, roadmaps, org charts | Do not share externally without approval |
+| **Confidential** | Customer data, financial data, contracts | Encrypt in transit and at rest; need-to-know access only |
+| **Restricted** | Credentials, personal health data, M&A info | Strict access controls; report any exposure immediately |
+
+<Tip>
+  When in doubt about how to classify a piece of data, treat it as one tier higher than you think it is. It is always safer to over-protect data and relax controls later than to expose something sensitive by underestimating it.
+</Tip>
+
+## Storage rules
+
+Following these rules ensures that company and customer data stays in systems that are audited, backed up, and access-controlled:
+
+- **Approved tools only** — Store company data in approved systems such as Google Drive, Notion, or S3. Do not use personal Dropbox, iCloud, or other unapproved services.
+- **No local copies of customer data** — Customer data must remain in approved systems at all times. Do not download it to your laptop for analysis — use authorized query tools instead.
+- **Credentials are never stored in code** — Use a secrets manager for all credentials. If you discover credentials committed to a codebase, rotate them immediately and file a security ticket.
+
+## Sharing data
+
+- **Internally** — Use the appropriate tool for the intended audience. Do not CC personal email addresses on internal threads or share internal documents via personal accounts.
+- **Externally** — Confidential data shared with vendors must be covered by an NDA before sharing. If you are unsure whether an NDA is in place, check with legal before sending anything.
+- **Customer data** — Never share customer data with third parties without a data processing agreement (DPA) in place. If you receive an external request for customer data, route it through the legal and privacy team — do not fulfill it yourself.
+
+## Retention and deletion
+
+Data should not be kept longer than it is needed. When a project ends or a customer offboards, follow the data retention schedule maintained by the legal team in their runbook. Holding on to data beyond its useful life increases risk without adding value.
+
+## Reporting a data incident
+
+<Warning>
+  If you accidentally expose, share, or lose control of confidential or restricted data, report it to `security@mortega.com` **immediately**. Include what happened, what data was involved, and who may have seen it.
+
+  Early reporting significantly reduces harm and allows the security and legal teams to respond before the situation escalates. There is **no penalty** for honest mistakes reported promptly — delays are far more damaging than the original incident.
+</Warning>

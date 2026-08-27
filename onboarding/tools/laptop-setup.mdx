@@ -1,0 +1,75 @@
+---
+title: "Company Laptop Setup: First Boot to Fully Configured"
+sidebarTitle: "Laptop Setup"
+description: "Configure your company laptop from first boot through MDM enrollment, required software, encryption verification, and role-specific tools."
+---
+
+All company laptops ship with a base OS image and endpoint management pre-installed. This guide walks you through everything you need to do from the moment you power on to the moment your machine is fully configured and ready for work.
+
+<Warning>
+  Do not wipe or reimage your machine without explicit IT approval. Doing so will remove the MDM profile and endpoint security agent, which must be reinstalled before you can access internal systems.
+</Warning>
+
+## First Boot
+
+<Steps>
+  <Step title="Run the OS setup wizard">
+    Power on your laptop and follow the operating system setup wizard. When prompted for an account or email address, use your company email — not a personal one.
+  </Step>
+  <Step title="Connect to Wi-Fi and wait for MDM enrollment">
+    Connect to any Wi-Fi network. IT's MDM profile will install automatically within a few minutes. Do not skip, dismiss, or cancel any MDM prompts — they are required for your machine to be compliant.
+  </Step>
+  <Step title="Confirm enrollment by email">
+    Check your company email for a confirmation message from IT. This confirms your machine is enrolled and managed. If it doesn't arrive within 30 minutes, file an [IT ticket](/it-security/access-requests).
+  </Step>
+</Steps>
+
+## Required Software
+
+IT pushes the following tools automatically via MDM — you do not need to install them manually.
+
+| Tool | Purpose |
+|------|---------|
+| Password manager | Secure credential storage |
+| Endpoint security agent | Threat detection and compliance |
+| VPN client | Access to internal systems (see [VPN setup](/onboarding/tools/vpn-setup)) |
+| SSO agent | Single sign-on for company apps |
+
+<Note>
+  If any of these tools are missing after 24 hours from MDM enrollment, contact the IT help desk. Do not attempt to download or install them from unofficial sources.
+</Note>
+
+## Role-Specific Setup
+
+Your manager or tech lead will point you to a team-specific setup guide based on your role. If you're an engineer, start with the [developer setup guide](/engineering/dev-setup).
+
+## Encryption Verification
+
+Full-disk encryption is required on all company devices. MDM enforces and enables this automatically, but you should verify it is active after your first boot.
+
+<Tabs>
+  <Tab title="macOS">
+    1. Open **System Settings**.
+    2. Navigate to **Privacy & Security**.
+    3. Scroll down to **FileVault**.
+    4. Confirm the status reads **FileVault is turned on**.
+
+    If FileVault is off, do not try to enable it manually — file an IT ticket and IT can enable it remotely.
+  </Tab>
+  <Tab title="Windows">
+    1. Open **Settings**.
+    2. Navigate to **Privacy & Security**.
+    3. Select **Device encryption**.
+    4. Confirm the toggle reads **On**.
+
+    If device encryption is off, file an IT ticket. IT can enable it remotely without requiring you to send your machine in.
+  </Tab>
+</Tabs>
+
+## Issues
+
+If your machine has hardware problems or is missing required software after the 24-hour MDM window, contact the IT help desk.
+
+<Warning>
+  Do not attempt to resolve hardware issues yourself. Opening or modifying the hardware on a company-issued device voids the warranty. Always go through IT first.
+</Warning>

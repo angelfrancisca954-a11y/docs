@@ -1,0 +1,61 @@
+---
+title: "Device Policy: Company and Personal Device Requirements"
+sidebarTitle: "Device Policy"
+description: "Security requirements for company-issued and personal devices accessing Mortega systems, covering MDM enrollment, BYOD rules, and lost device steps."
+---
+
+All devices used to access Mortega systems — whether company-owned or personal (BYOD) — must meet our minimum security requirements. These standards protect company data and ensure that a lost or compromised device doesn't become a larger incident. Review the requirements for your device type below.
+
+<Tabs>
+  <Tab title="Company-Issued Devices">
+    Company laptops and phones are enrolled in MDM (Mobile Device Management) automatically when you receive them. MDM enforces the following controls on every company-issued device:
+
+    - **Full-disk encryption** — all data on the device is encrypted at rest
+    - **Screen lock after 5 minutes** of inactivity
+    - **Approved OS versions** — your device will prompt you to update when a new approved version is available
+    - **Endpoint security agent** — monitors for threats and policy violations
+    - **Remote wipe capability** — allows IT to erase the device if it is lost or stolen
+
+    <Warning>
+      Do not attempt to remove MDM profiles or disable any security software on a company-issued device. Doing so may result in immediate loss of access to company systems and disciplinary action.
+    </Warning>
+  </Tab>
+  <Tab title="Personal Devices (BYOD)">
+    If you use a personal device to access work email, Slack, or any other company system, you must meet the following minimum requirements before doing so:
+
+    1. Enable a screen lock (PIN, password, or biometric)
+    2. Enable full-disk encryption
+    3. Keep the operating system up to date
+    4. Avoid storing sensitive company data locally on the device
+
+    Personal devices are **not** enrolled in MDM unless you voluntarily opt in. If IT needs to take action on a personal device during a security incident, only the work profile (where applicable) will be targeted — your personal data will not be touched.
+
+    <Note>
+      If you are unsure whether your personal device meets these requirements, reach out to IT via `#it-help` on Slack. They can walk you through checking your settings without enrolling your device in MDM.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Approved and prohibited uses
+
+**Approved uses:**
+- Work tasks, communication, and collaboration using company-approved tools
+- Personal use that does not interfere with device security or performance
+
+**Prohibited uses:**
+- Installing software that circumvents or disables security controls
+- Storing company data in personal cloud storage (use approved tools such as Google Drive or Notion)
+- Connecting a company laptop to an untrusted network without first enabling VPN
+- Sharing your device with family members for work-related tasks
+
+## Lost or stolen devices
+
+<Warning>
+  Report a lost or stolen device to IT **immediately** — do not wait to see if it turns up. Every hour of delay increases the risk of unauthorized access to company systems and data.
+
+  Contact IT via `#it-help` on Slack or by email. IT will remotely lock the device right away and initiate a remote wipe if necessary.
+</Warning>
+
+## End of employment
+
+Return all company-issued devices on or before your last day at Mortega. Devices that are retained or not returned are subject to remote wipe, recovery action, and potential legal consequences.

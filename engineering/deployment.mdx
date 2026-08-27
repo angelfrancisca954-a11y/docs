@@ -1,0 +1,81 @@
+---
+title: "Deployment: Staging, Production, and Rollbacks"
+sidebarTitle: "Deployment"
+description: "Learn how code moves from a merged PR through staging to production, how to promote builds, roll back, and use feature flags safely."
+---
+
+We use a trunk-based deployment model at Mortega. Merging to `main` triggers a staging deploy automatically — production deploys are triggered manually after you've verified the change in staging. This two-step flow keeps production stable while letting you move fast.
+
+## Flow overview
+
+```
+feature branch → PR review → merge to main → auto-deploy to staging → manual promote to production
+```
+
+## Deploying to staging
+
+Every merge to `main` triggers a staging deployment automatically via CI. You don't need to do anything. Check the `#deploys` Slack channel for status notifications.
+
+Staging deployments take approximately 5–10 minutes. If a deploy fails, CI will post the error in `#deploys` with a link to the failed run.
+
+## Promoting to production
+
+Once you've verified your change in staging, promote it to production:
+
+<Steps>
+  <Step title="Open the deploy tool">
+    Find the link in the `#deploys` channel description.
+  </Step>
+
+  <Step title="Select the staging build">
+    Choose the staging build you want to promote. Confirm it matches the commit you verified.
+  </Step>
+
+  <Step title="Click Promote to production">
+    Hit **Promote to production** to start the deploy.
+  </Step>
+
+  <Step title="Monitor for confirmation">
+    Watch the `#deploys` channel for a success notification or error message.
+  </Step>
+</Steps>
+
+<Note>
+  Production deploys require at least one engineer who didn't author the change to click promote. This is a soft guard — use your judgment in an emergency, but document it in `#deploys`.
+</Note>
+
+## Rolling back
+
+If a production deploy causes an issue, roll back immediately and investigate afterward:
+
+<Steps>
+  <Step title="Open the deploy tool">
+    Find the link in the `#deploys` channel description.
+  </Step>
+
+  <Step title="Select the previous stable build">
+    Choose the last known-good build from the list.
+  </Step>
+
+  <Step title="Click Rollback">
+    Hit **Rollback** to begin the rollback deploy.
+  </Step>
+
+  <Step title="Notify the team">
+    Post in `#incidents` that a rollback is in progress so the team is aware and can assist if needed.
+  </Step>
+</Steps>
+
+Rollbacks complete in under 5 minutes in most cases.
+
+<Warning>
+  If your change included a data migration, coordinate with the on-call engineer before rolling back. Rolling back application code without reversing a migration can leave the database in an inconsistent state.
+</Warning>
+
+## Feature flags
+
+For high-risk changes, wrap new behavior in a feature flag. This lets you enable the feature for internal users or a percentage of traffic before a full rollout, and disable it instantly if something goes wrong — without deploying new code.
+
+<Tip>
+  Ask your tech lead how to add a feature flag for your service. Flags are especially useful for database schema changes, pricing changes, and new integrations where you want a gradual rollout.
+</Tip>

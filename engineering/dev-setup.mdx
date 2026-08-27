@@ -1,0 +1,84 @@
+---
+title: "Developer Setup: Local Environment from Scratch"
+sidebarTitle: "Dev Setup"
+description: "Configure your local development environment on a fresh macOS machine in under an hour, from tooling installation to a passing test suite."
+---
+
+This guide walks you through setting up your local development environment from a brand-new macOS machine. By the end you'll have all core tooling installed, the main repository cloned, environment variables configured, and the test suite passing. This guide assumes your company laptop is already enrolled in MDM — if it isn't, complete [laptop setup](/onboarding/tools/laptop-setup) first.
+
+## Prerequisites
+
+Before you start, confirm you have the following in place:
+
+- Company laptop with MDM enrolled — see [laptop setup](/onboarding/tools/laptop-setup)
+- VPN connected — see [VPN setup](/onboarding/tools/vpn-setup)
+- Git repository access granted — see [account access](/onboarding/tools/account-access)
+
+<Note>
+  If you're on Windows, we don't officially support it for local development. WSL2 works for most engineers, but you'll need to adapt some steps. Check with your tech lead before your start date if you prefer Windows.
+</Note>
+
+## Setup steps
+
+<Steps>
+  <Step title="Install core tooling">
+    Run the bootstrap script — your tech lead will share the URL on your first day. The command takes the form:
+
+    ```bash
+    /bin/bash -c "$(curl -fsSL <bootstrap-script-url>)"
+    ```
+
+    If you'd rather install manually, the script installs: a package manager, git, your language runtimes, Docker, and your IDE.
+  </Step>
+
+  <Step title="Clone the main repository">
+    Clone your team's repository using the URL your tech lead provides:
+
+    ```bash
+    mkdir ~/code && cd ~/code
+    git clone <your-team-repository-url>
+    ```
+
+    <Tip>
+      If `git clone` fails with a permission error, your SSH key isn't authorized yet. Ask your tech lead to check your access before trying anything else.
+    </Tip>
+  </Step>
+
+  <Step title="Set up environment variables">
+    Each repo has a `.env.example` in the root. Copy it to create your local config:
+
+    ```bash
+    cp .env.example .env.local
+    ```
+
+    Fill in the required values — ask your tech lead or check the `#eng-setup` Slack channel for development secrets.
+
+    <Warning>
+      Never commit `.env.local` to version control. It contains secrets that must stay off of git. The file is already in `.gitignore`, but double-check before staging files.
+    </Warning>
+  </Step>
+
+  <Step title="Install dependencies and run locally">
+    ```bash
+    cd <repo-directory>
+    npm install
+    npm run dev
+    ```
+
+    The app should be running at `http://localhost:3000`. If you hit errors, check the repo's own `README.md` for service-specific requirements such as databases or queues that may need to be running first.
+  </Step>
+
+  <Step title="Verify your setup">
+    Run the test suite to confirm everything is wired up correctly:
+
+    ```bash
+    npm test
+    ```
+
+    All tests should pass on a fresh clone. If any fail, post in `#eng-setup` with the full error output before debugging solo — it's almost always a known environment issue with a quick fix.
+  </Step>
+</Steps>
+
+## Getting help
+
+Post in `#eng-setup` on Slack. Include your OS version, the exact command you ran, and the full error output. The team is used to helping with first-day setup issues and can usually turn around a fix quickly.

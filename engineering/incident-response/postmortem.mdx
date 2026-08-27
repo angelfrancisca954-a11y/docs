@@ -1,0 +1,83 @@
+---
+title: "Postmortem Process: Writing, Review, and Follow-Through"
+sidebarTitle: "Postmortem"
+description: "Learn how to write a blameless postmortem at Mortega, run the review meeting effectively, and make sure every action item gets completed."
+---
+
+Postmortems are required for all SEV-1 and SEV-2 incidents, and optional for recurring SEV-3 patterns. The goal is learning, not blame. A good postmortem makes your systems more reliable over time by surfacing gaps in tooling, processes, alerting, and communication — not by identifying who made a mistake.
+
+## What "blameless" means
+
+Blameless means we focus on what failed in the system — processes, tooling, alerting, communication — rather than on who made a mistake. Engineers make good decisions with the information available to them at the time. The postmortem's job is to identify where the system let them down, and what to change so the same gap doesn't cause another incident.
+
+## Timeline
+
+Complete each step within these windows to keep momentum and memory fresh:
+
+| Timing | Action |
+|--------|--------|
+| Within 24 hours of resolution | Create the postmortem doc from the template |
+| Within 48 hours | Draft the timeline and contributing factors |
+| Within 5 business days | Hold the postmortem review meeting |
+| Within 2 weeks | Action items assigned and tracked in your issue tracker |
+
+## Writing the postmortem
+
+Create a new doc in your wiki using the Postmortem template, then work through each section:
+
+<Steps>
+  <Step title="Incident summary">
+    Write one paragraph covering what happened, when it started, and what the impact was. This is the first thing readers see — make it clear and factual.
+  </Step>
+
+  <Step title="Timeline">
+    Build a chronological log of events in UTC. Include when the issue started, when it was detected, all key actions taken, and when it was resolved. Be precise with timestamps.
+  </Step>
+
+  <Step title="Root cause">
+    Identify the underlying cause. Use the "5 Whys" technique if it helps you get past the surface-level trigger to the real systemic issue.
+  </Step>
+
+  <Step title="Contributing factors">
+    List anything else that made the incident worse or harder to detect — slow alerting, unclear runbooks, unclear ownership, etc.
+  </Step>
+
+  <Step title="Impact">
+    Quantify the blast radius: number of users affected, duration, and any data involved.
+  </Step>
+
+  <Step title="What went well">
+    Note the things that worked during the response. This reinforces good practices and gives the team something to feel good about.
+  </Step>
+
+  <Step title="Action items">
+    Define concrete, assigned action items with due dates. Every significant contributing factor should have at least one action item. Vague items don't get done — be specific about what "done" looks like.
+  </Step>
+</Steps>
+
+## The review meeting
+
+Keep the review meeting to 30–45 minutes. The incident owner facilitates. Everyone who was involved should attend; others are welcome to observe.
+
+**Agenda:**
+1. Walk through the timeline (10 min)
+2. Discuss root cause and contributing factors (10 min)
+3. Review and assign action items (15 min)
+
+<Note>
+  Don't re-hash decisions made during the incident itself. The review meeting is forward-looking — focus on what to do differently next time, not what should have been done differently in the moment.
+</Note>
+
+## Action items
+
+Action items without owners don't get done. Every item needs:
+
+- A clear description of what "done" looks like
+- A single owner (a person, not a team)
+- A due date
+
+Track them in your issue tracker. Your engineering manager reviews open postmortem action items in the weekly team meeting to make sure nothing falls through.
+
+<Warning>
+  If action items from a postmortem aren't completed before a similar incident recurs, that's a signal the items weren't concrete enough or didn't have real ownership. Revisit them at the next team meeting.
+</Warning>

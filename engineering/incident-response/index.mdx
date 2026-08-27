@@ -1,0 +1,61 @@
+---
+title: "Incident Response: Detection, Response, and Learning"
+sidebarTitle: "Incident Response"
+description: "Understand how Mortega detects and responds to production incidents, severity levels, and the step-by-step process for restoring service fast."
+---
+
+When something breaks in production, the goal is to restore service as quickly as possible — then understand why it happened. This section covers everything you need to respond confidently: severity definitions, a step-by-step response process, on-call expectations, and the postmortem workflow.
+
+## Severity levels
+
+Use these levels to calibrate your response speed and who you pull in.
+
+| Level | Description | Response target |
+|-------|-------------|-----------------|
+| SEV-1 | Production down or data loss | Immediate, all hands |
+| SEV-2 | Significant degradation, major feature broken | Within 30 minutes |
+| SEV-3 | Minor degradation, workaround available | Within 2 hours |
+| SEV-4 | Cosmetic or low-impact issue | Next business day |
+
+## Responding to an alert
+
+<Steps>
+  <Step title="Acknowledge the alert">
+    Acknowledge in your alerting tool to signal you're on it and stop repeat pages going to others.
+  </Step>
+
+  <Step title="Assess severity">
+    Determine whether this is SEV-1/2 (needs immediate action) or SEV-3/4 (can be handled at a measured pace).
+  </Step>
+
+  <Step title="Open a war room">
+    For SEV-1 or SEV-2, create a Slack thread in `#incidents` and invite your on-call partner. This becomes the central coordination point.
+  </Step>
+
+  <Step title="Mitigate first">
+    Prioritize restoring service before diagnosing root cause. Roll back, disable a feature flag, or scale up resources — whatever stops the bleeding fastest.
+  </Step>
+
+  <Step title="Communicate regularly">
+    Post updates to `#incidents` every 15 minutes until the incident is resolved, even if there's nothing new to report. Silence creates anxiety.
+  </Step>
+
+  <Step title="Resolve and document">
+    Mark the incident resolved in your alerting tool. For SEV-1 and SEV-2, file a postmortem within 24 hours.
+  </Step>
+</Steps>
+
+<Note>
+  Mitigating first — before you fully understand the cause — is the right call. A rollback now is better than a perfect fix in two hours.
+</Note>
+
+## Dig deeper
+
+<CardGroup cols={2}>
+  <Card title="On-Call Expectations" icon="phone" href="/engineering/incident-response/on-call">
+    Rotation schedule, availability requirements, escalation paths, and what to do when you're paged.
+  </Card>
+  <Card title="Postmortem Process" icon="file-text" href="/engineering/incident-response/postmortem">
+    How to write a blameless postmortem, run the review meeting, and make sure action items land.
+  </Card>
+</CardGroup>

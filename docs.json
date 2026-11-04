@@ -22,10 +22,12 @@
     "tabs": [
       {
         "tab": "Onboarding",
-        "groups": [
+        "pages": [
           {
             "group": "Welcome",
-            "pages": ["index"]
+            "pages": [
+              "index"
+            ]
           },
           {
             "group": "Your First Days",
@@ -42,7 +44,8 @@
               "onboarding/tools/account-access",
               "onboarding/tools/vpn-setup"
             ]
-          }
+          },
+          "onboarding/tools/account-access"
         ]
       },
       {

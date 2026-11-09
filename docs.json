@@ -178,5 +178,9 @@
       "x": "https://x.com/mortega",
       "linkedin": "https://linkedin.com/company/mortega"
     }
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "latex": true
   }
 }
